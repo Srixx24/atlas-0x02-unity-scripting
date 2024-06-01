@@ -42,4 +42,19 @@ public class PlayerController : MonoBehaviour
         // Force to the Rigidbody of player.
         rb.AddForce(movement * speed); 
     }
+
+    // Player score
+    private int score = 0;
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Pickup"))
+        {
+            // Increment score and print total
+            score++;
+            Debug.Log($"Score: {score}");
+
+            // Destroy coin after contact
+            Destroy(other.gameObject);
+        }
+    }
 }

@@ -14,7 +14,10 @@ public class PlayerController : MonoBehaviour
     private float movementY;
 
     // Player speed.
-    public float speed = 0; 
+    public float speed = 0;
+
+    // Player health
+    public int health = 5;
 
     void Start()
     {
@@ -55,6 +58,12 @@ public class PlayerController : MonoBehaviour
 
             // Destroy coin after contact
             Destroy(other.gameObject);
+        }
+
+        if (other.CompareTag("Trap"))
+        {
+            health--;
+            Debug.Log($"Health: {health}");
         }
     }
 }
